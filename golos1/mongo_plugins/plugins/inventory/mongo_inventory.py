@@ -10,7 +10,7 @@ from pymongo import MongoClient
 DOCUMENTATION = r"""
         name: mongo_inventory
         author: Golos1
-        version_added: "2.18" 
+        version_added: "1.0.0" 
         short_description: queries MongoDB cluster for hosts.  Requires "pymongo (>=4.11.3,<5.0.0)"
         description:
             - Requires "pymongo (>=4.11.3,<5.0.0)"
@@ -61,6 +61,17 @@ DOCUMENTATION = r"""
                         type: dict
                         required: False
     """
+EXAMPLES = r"""
+plugin: mongo_inventory
+connection_string: <your connection string>
+keyed_groups:
+  - "os"
+query_groups:
+  - group_name: "Bandit_Servers"
+    db_name: inventory
+    collection_name: ansible_hosts
+    query: {port: {$gte: 1000}}
+"""
 class InventoryModule(BaseInventoryPlugin):
     NAME = 'mongo_inventory'
 

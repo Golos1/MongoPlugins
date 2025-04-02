@@ -1,0 +1,18 @@
+[project]
+name = "Mongo_Plugins"
+version = "0.1.0"
+description = "dynamic inventory system using mongodb connection string for ansible"
+authors = [
+    {name = "Golos1",email = "20acann@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "ansible (>=11.4.0,<12.0.0)",
+    "pymongo (>=4.11.3,<5.0.0)",
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

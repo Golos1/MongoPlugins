@@ -7,8 +7,12 @@ jobs:
   build_and_publish_to_galaxy:
     runs-on: 'ubuntu-latest'
     steps:
+      - working-directory: .
+        run: sudo apt update
+      - working-directory: .
+        run: sudo apt install -y ansible
       - working-directory: ./golos1/mongo_plugins
-        run: ansible-galaxy collection build -o .
+        run: ansible-galaxy collection build
       - working-directory: ./golos1
         run: ansible-galaxy collection publish ./mongo_plugins/golos1-mongo_plugins-1.0.0.tar.gz --api-key ${{secrets.GALAXY_TOKEN}}
 
